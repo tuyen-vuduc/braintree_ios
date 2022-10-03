@@ -73,7 +73,7 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(name: "PayPalCheckout", url: "https://github.com/tuyen-vuduc/paypalcheckout-ios", .exact("0.100.0"))
+        .package(name: "PayPalCheckout", url: "https://github.com/paypal/paypalcheckout-ios", .exact("0.100.0"))
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -81,38 +81,66 @@ let package = Package(
         .target(
             name: "BraintreeAmericanExpress",
             dependencies: ["BraintreeCore"],
-            publicHeadersPath: "Public"
+            publicHeadersPath: "Public",
+			cSettings: [
+				.headerSearchPath("."),
+				.headerSearchPath("Private"),
+			]
         ),
         .target(
             name: "BraintreeApplePay",
             dependencies: ["BraintreeCore"],
-            publicHeadersPath: "Public"
+            publicHeadersPath: "Public",
+			cSettings: [
+				.headerSearchPath("."),
+				.headerSearchPath("Private"),
+			]
         ),
         .target(
             name: "BraintreeCard",
             dependencies: ["BraintreeCore"],
-            publicHeadersPath: "Public"
+            publicHeadersPath: "Public",
+			cSettings: [
+				.headerSearchPath("."),
+				.headerSearchPath("Private"),
+			]
         ),
         .target(
             name: "BraintreeCore",
             exclude: ["Info.plist"],
-            publicHeadersPath: "Public"
+            publicHeadersPath: "Public",
+			cSettings: [
+				.headerSearchPath("."),
+				.headerSearchPath("Private"),
+			]
         ),
         .target(
             name: "BraintreeDataCollector",
             dependencies: ["BraintreeCore", "KountDataCollector"],
             exclude: ["Kount"],
-            publicHeadersPath: "Public"
+            publicHeadersPath: "Public",
+			cSettings: [
+				.headerSearchPath("."),
+				.headerSearchPath("Private"),
+			]
         ),
         .target(
             name: "BraintreePaymentFlow",
             dependencies: ["BraintreeCore", "PayPalDataCollector"],
-            publicHeadersPath: "Public"
+            publicHeadersPath: "Public",
+			cSettings: [
+				.headerSearchPath("."),
+				.headerSearchPath("Private"),
+			]
         ),
         .target(
             name: "BraintreePayPal",
             dependencies: ["BraintreeCore", "PayPalDataCollector"],
-            publicHeadersPath: "Public"
+            publicHeadersPath: "Public",
+			cSettings: [
+				.headerSearchPath("."),
+				.headerSearchPath("Private"),
+			]
         ),
         .target(
             name: "BraintreePayPalNativeCheckout",
@@ -132,7 +160,11 @@ let package = Package(
             name: "BraintreeThreeDSecure",
             dependencies: ["BraintreePaymentFlow", "BraintreeCard", "CardinalMobile", "PPRiskMagnes"],
             publicHeadersPath: "Public",
-            cSettings: [.headerSearchPath("V2UICustomization")]
+            cSettings: [
+                .headerSearchPath("V2UICustomization"),
+				.headerSearchPath("."),
+				.headerSearchPath("Private"),
+            ]
         ),
         .binaryTarget(
             name: "CardinalMobile",
@@ -141,12 +173,20 @@ let package = Package(
         .target(
             name: "BraintreeUnionPay",
             dependencies: ["BraintreeCard"],
-            publicHeadersPath: "Public"
+            publicHeadersPath: "Public",
+			cSettings: [
+				.headerSearchPath("."),
+				.headerSearchPath("Private"),
+			]
         ),
         .target(
             name: "BraintreeVenmo",
             dependencies: ["BraintreeCore"],
-            publicHeadersPath: "Public"
+            publicHeadersPath: "Public",
+			cSettings: [
+				.headerSearchPath("."),
+				.headerSearchPath("Private"),
+			]
         ),
         .binaryTarget(
             name: "KountDataCollector",

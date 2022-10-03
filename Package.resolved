@@ -3,7 +3,7 @@
     "pins": [
       {
         "package": "PayPalCheckout",
-        "repositoryURL": "https://github.com/paypal/paypalcheckout-ios",
+        "repositoryURL": "https://github.com/tuyen-vuduc/paypalcheckout-ios",
         "state": {
           "branch": null,
           "revision": "122a8a67f30b55768321e3cb3d30ce6792585063",
